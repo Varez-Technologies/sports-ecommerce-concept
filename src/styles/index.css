@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode (toggled by adding `.dark` to <html>). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+ * Smooth color fade when switching light/dark. The `.theme-transition` class
+ * is added to <html> only for the duration of a toggle, so the fade never
+ * fires on initial load or interferes with normal hover/focus interactions.
+ */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    fill 0.35s ease;
+}
+
+/* Icon swap animation for the theme toggle button. */
+@keyframes theme-icon-pop {
+  from {
+    transform: rotate(-90deg) scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
