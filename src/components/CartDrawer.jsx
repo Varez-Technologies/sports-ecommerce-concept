@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext.jsx'
 import QuantityStepper from './QuantityStepper.jsx'
+import { getAssetUrl } from '../utils/assetHelper.js'
 
 /** Slide-in cart panel. Rendered once in Layout; opened via the navbar cart button. */
 export default function CartDrawer() {
@@ -71,7 +72,7 @@ export default function CartDrawer() {
                 className="flex gap-3 border-b border-gray-100 p-4 dark:border-gray-800"
               >
                 <img
-                  src={product.image}
+                  src={getAssetUrl(product.image)}
                   alt={product.name}
                   className="h-16 w-16 shrink-0 rounded-lg object-cover"
                 />

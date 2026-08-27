@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { getBrand } from '../data/brands.js'
 import { getProductsByBrand } from '../services/productService.js'
 import ProductCard from '../components/ProductCard.jsx'
+import { getAssetUrl } from '../utils/assetHelper.js'
 
 export default function BrandPage() {
   const { brandId } = useParams()
@@ -51,7 +52,7 @@ export default function BrandPage() {
     <>
       <div className="relative h-48 sm:h-64">
         <img
-          src={brand.banner}
+          src={getAssetUrl(brand.banner)}
           alt={brand.name}
           className="h-full w-full object-cover"
         />

@@ -4,6 +4,7 @@ import Carousel from '../components/Carousel.jsx'
 import ProductCard from '../components/ProductCard.jsx'
 import { brands } from '../data/brands.js'
 import { getAllProducts } from '../services/productService.js'
+import { getAssetUrl } from '../utils/assetHelper.js'
 
 const carouselSlides = [
   { image: '/img/carousel/cricket3.jpg', alt: 'Cricket equipment' },
@@ -50,7 +51,7 @@ export default function Home() {
               className="group relative overflow-hidden rounded-xl"
             >
               <img
-                src={b.banner}
+                src={getAssetUrl(b.banner)}
                 alt={b.name}
                 className="h-44 w-full object-cover transition duration-300 group-hover:scale-105"
               />

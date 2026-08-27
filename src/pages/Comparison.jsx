@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getAllProducts } from '../services/productService.js'
 import { brands } from '../data/brands.js'
+import { getAssetUrl } from '../utils/assetHelper.js'
 
 function ProductSelector({ products, selectedId, onSelect, label }) {
   const product = products.find((p) => p.id === selectedId) ?? null
@@ -30,7 +31,7 @@ function ProductSelector({ products, selectedId, onSelect, label }) {
       {product ? (
         <div className="mt-4 rounded-xl border border-gray-200 p-4 dark:border-gray-800">
           <img
-            src={product.image}
+            src={getAssetUrl(product.image)}
             alt={product.name}
             className="aspect-square w-full rounded-lg bg-gray-100 object-cover dark:bg-gray-800"
           />

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useCart } from '../context/CartContext.jsx'
 import { useWishlist } from '../context/WishlistContext.jsx'
+import { getAssetUrl } from '../utils/assetHelper.js'
 
 /**
  * Product detail modal. Controlled by the parent via `isOpen` / `onClose`.
@@ -56,9 +57,13 @@ export default function ProductModal({ product, isOpen, onClose }) {
         </div>
         <div className="grid gap-6 px-6 pb-8 sm:grid-cols-2">
           <img
-            src={product.image}
+            src={getAssetUrl(product.image)}
             alt={product.name}
             className="w-full rounded-lg bg-gray-100 object-cover dark:bg-gray-800"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = getAssetUrl('/img/Comparison/No_Image.png');
+            }}
           />
           <div className="flex flex-col">
             <span className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">

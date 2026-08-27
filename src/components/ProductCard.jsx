@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ProductModal from './ProductModal.jsx'
 import { useCart } from '../context/CartContext.jsx'
 import { useWishlist } from '../context/WishlistContext.jsx'
+import { getAssetUrl } from '../utils/assetHelper.js'
 
 /** A product tile: image hover-swap, wishlist toggle, add-to-cart, and detail modal. */
 export default function ProductCard({ product }) {
@@ -26,9 +27,13 @@ export default function ProductCard({ product }) {
             aria-label={`View details for ${product.name}`}
           >
             <img
-              src={showHover ? product.hoverImage : product.image}
+              src={getAssetUrl(showHover ? product.hoverImage : product.image)}
               alt={product.name}
               className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = getAssetUrl('/img/Comparison/No_Image.png');
+              }}
             />
           </button>
           <button

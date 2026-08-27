@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext.jsx'
 import QuantityStepper from '../components/QuantityStepper.jsx'
+import { getAssetUrl } from '../utils/assetHelper.js'
 
 const FREE_SHIPPING_THRESHOLD = 80
 const SHIPPING_FEE = 9
@@ -38,7 +39,7 @@ export default function Cart() {
               className="flex gap-4 rounded-xl border border-gray-200 p-4 dark:border-gray-800"
             >
               <img
-                src={product.image}
+                src={getAssetUrl(product.image)}
                 alt={product.name}
                 className="h-24 w-24 shrink-0 rounded-lg object-cover"
               />

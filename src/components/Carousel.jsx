@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { getAssetUrl } from '../utils/assetHelper.js'
 
 /**
  * Fading image carousel. `slides` is an array of { image, alt }.
@@ -21,7 +22,7 @@ export default function Carousel({ slides, interval = 4500 }) {
       {slides.map((slide, i) => (
         <img
           key={slide.image}
-          src={slide.image}
+          src={getAssetUrl(slide.image)}
           alt={slide.alt ?? ''}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
             i === index ? 'opacity-100' : 'opacity-0'
